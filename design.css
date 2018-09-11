@@ -1,0 +1,90 @@
+body {
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	
+	margin: auto;
+	margin: 20px;
+	padding: 5px;
+	
+	border: black 1px solid;
+	
+	font-family: "Courier New";
+	font-size: 12px;
+	background-color: #afafdc; /* #afafaf */
+}
+
+header {
+	/* width: 1188px; */
+	margin-bottom: 7px;
+	padding: 5px;
+	border: black 1px solid;
+	background-color: #8f8f8f;
+	color: yellow;
+	text-align: center;
+	font-weight: bold;
+}
+
+input {
+	font-family: "Courier New";
+	font-size: 12px;
+	margin-bottom: 2px;
+}
+
+div {
+	border: black 1px solid;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+p {
+	border: black 1px solid;
+	margin: 0px;
+	margin-bottom: 5px;
+	padding: 5px;
+}
+
+td img { vertical-align: bottom; }
+#message { background-color: #ff0000; }
+#etat { background-color: #afafdc; }
+
+#sectionGauche {
+	width: 350px;
+	position: absolute;
+	top: 37px;
+	left: 5px;
+	bottom: 0px;
+}
+
+#sectionDroite {
+	position: absolute;
+	top: 37px;
+	left: 373px;
+	bottom: 0px;
+	right: 5px;
+}
+
+section {
+	margin: 0px;
+	margin-bottom: 5px;
+	padding: 5px;
+	border: black 1px solid;
+}
+
+table {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	border-collapse: collapse;
+	border: black 1px solid;
+}
+
+td {
+	width: 50px;
+	height: 50px;
+	padding: 0px;
+	margin: 0px;
+	/*border: 1px solid black;*/
+}

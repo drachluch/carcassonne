@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<link rel="icon" type="image/png" href="icone/icone.png" />
+		<link rel="stylesheet" type="text/css" href="design.css" title="default" media="screen" />
+		<title>Carcassonne</title>
+	</head>
+	<body>
+		<header>Carcassonne</header>
+		<section id="sectionGauche">
+			<div id="nav">
+				<span id="nav_aucune_partie_en_cours"><input type="button" value="Nouvelle partie" id="nav_bouton_nouvelle_partie" /><br /><input type="button" value="Aide" id="nav_bouton_aide_apc" /><br /><input type="button" value="Charger une partie" id="nav_bouton_charger_partie" style="display: none;" /></span>
+				<span id="nav_partie_en_cours" style="display: none;"><input type="button" value="Aide" id="nav_bouton_aide_pc" /><input type="button" value="Retour à la partie" id="nav_bouton_retour_a_la_partie" style="display:none;" /><br /><input type="button" value="Mettre fin à la partie" id="nav_bouton_mettre_fin_partie" /><br style="display:none;" /><input type="button" value="Sauvegarder la partie" id="nav_bouton_sauvegarder_partie" style="display: none;" /></span>
+			</div>
+			<ul id="info_joueur">
+				<li id="li_aucun_joueur">Aucune information à afficher ici...</li>
+				<li id="li_j1" style="display: none;">
+					<img src="icone/couleur_j1.png" />
+					<img id="tour_tuile_joueur1" src="icone/vide.png" />
+					<i id="inom_j1">Joueur1</i><br />
+					<img src="icone/partisan_j1.png" />
+					<b id="nb_partisans_joueur1">7</b><br />
+					Points : <b id="points_joueur1">0</b>.
+				</li>
+				<li id="li_j2" style="display: none;">
+					<img src="icone/couleur_j2.png" />
+					<img id="tour_tuile_joueur2" src="icone/vide.png" />
+					<i id="inom_j2">Joueur2</i><br />
+					<img src="icone/partisan_j2.png" />
+					<b id="nb_partisans_joueur2">7</b><br />
+					Points : <b id="points_joueur2">0</b>.
+				</li>
+				<li id="li_j3" style="display: none;">
+					<img src="icone/couleur_j3.png" />
+					<img id="tour_tuile_joueur3" src="icone/vide.png" />
+					<i id="inom_j3">Joueur3</i><br />
+					<img src="icone/partisan_j3.png" />
+					<b id="nb_partisans_joueur3">7</b><br />
+					Points : <b id="points_joueur3">0</b>.
+				</li>
+				<li id="li_j4" style="display: none;">
+					<img src="icone/couleur_j4.png" />
+					<img id="tour_tuile_joueur4" src="icone/vide.png" />
+					<i id="inom_j4">Joueur4</i><br />
+					<img src="icone/partisan_j4.png" />
+					<b id="nb_partisans_joueur4">7</b><br />
+					Points : <b id="points_joueur4">0</b>.
+				</li>
+			</ul>
+			<p id="log">Lancement de la page.</p>
+		</section>
+		<section id="sectionDroite">
+			<p id="message">Le script javascript n'a pas été exécuté.</p>
+			<p id="etat">Formulaire de nouvelle partie.</p>
+			<form id="formulaire">
+				<div id="form_nouvelle_partie">
+					<b>Nouvelle partie :</b><br /><br />
+					Choisissez les extensions de Carcassonne(standard) avec lesquelles vous voulez jouer :<br />
+					- <input type="checkbox" id="extension_fleuve" />: Extension Fleuve.<br />
+					- <input type="checkbox" id="extension_cathedrale" />: Extension Cathédrale.<br />
+					- <input type="checkbox" id="extension_lac" />: Extension Lac.<br />
+					Choisissez le nombre de joueurs et saisissez leurs noms :<br />
+					<i>Les majuscules, minucules sans accent et chiffres ainsi que _ et - sont les seules caractères autorisés. Le nombre de caractère doit être compris entre 2 et 26. Chaque nom doit être différent des autres.</i><br />
+					<input type="radio" name="nb_joueurs" id="radio_2j" checked="checked" />2 joueurs.
+					<input type="radio" name="nb_joueurs" id="radio_3j" />3 joueurs.
+					<input type="radio" name="nb_joueurs" id="radio_4j" />4 joueurs.<br /><br />
+					<input type="text" id="champ_nom_j1" value="Herbert" /><label for="champ_nom_j1" id="label_nom_j1">: Joueur1.</label><br />
+					<input type="text" id="champ_nom_j2" value="Georges" /><label for="champ_nom_j2" id="label_nom_j2">: Joueur2.</label><br />
+					<span id="champ_j3" style="display: none;"><input type="text" id="champ_nom_j3" value="Gerard" /><label for="champ_nom_j3" id="label_nom_j3">: Joueur3.</label><br /></span>
+					<span id="champ_j4" style="display: none;"><input type="text" id="champ_nom_j4" value="Joueur4" /><label for="champ_nom_j4" id="label_nom_j4">: Joueur4.</label><br /></span>
+					<br /><input type="button" value="Nouvelle partie" id="bouton_valider_nouvelle_partie" />
+				</div>
+				<div id="form_charger_partie" style="display: none;"></div>
+				<div id="form_sauvegarder_partie" style="display: none;"></div>
+				<div id="form_aide" style="display: none;">
+					<b>Touches utilisées :</b><br /><br />
+					Durant la phase de placement de tuile :<br />
+					- Flèche gauche: sélection de l'emplacement à gauche de celui actuellement sélectionné.<br />
+					- Flèche haute: sélection de l'emplacement au dessus de celui actuellement sélectionné.<br />
+					- Flèche droite: sélection de l'emplacement à droite de celui actuellement sélectionné.<br />
+					- Flèche basse: sélection de l'emplacement en dessous de celui actuellement sélectionné.<br />
+					- R: rotation de la tuile à l'emplacement sélectionné.<br />
+					- <>: sélection de l'emplacement possible suivant (déconseillé).<br /><br />
+					- Entrée ou barre d'espace: validation du placement de la tuile à l'emplacement sélectionné.<br />
+					- P: validation provisoire du placement de la tuile et lancement de la phase de placement du partisan.<br /><br />
+					Durant la phase de placement du partisan :<br />
+					- M: sélection du métier possible suivant.<br />
+					- <>: sélection de la position possible suivante du partisan en fonction du métier sélectionné.<br />
+					- P: annulation du placement du partisan; retour à la phase de placement de tuile.<br />
+					- Entrée ou barre d'espace: validation du placement de la tuile à l'emplacement sélectionné ET de celui du partisan.<br /><br />
+					Durant n'importe quelle phase :<br />
+					- 2 (pavé numérique): décalage du plateau vers le haut.<br />
+					- 4 (pavé numérique): décalage du plateau vers la gauche.<br />
+					- 6 (pavé numérique): décalage du plateau vers la droite.<br />
+					- 7 (pavé numérique): replacement du plateau à sa position initiale.<br />
+					- 8 (pavé numérique): décalage du plateau vers le haut.<br /><br /><br />
+					Bug lors de la fusion d'ensembles de zones.<br />"La troll box n'existe pas".<br />
+				</div>
+			</form>
+			<table id="plateau" style="display:none;"></table>
+			<span id="le_span_du_plateau" style="display:none;"></span>
+		</section>
+		
+		<script language="javascript" src="jsold/class/class_ap.js"></script>
+		<script language="javascript" src="jsold/class/class_bc.js"></script>
+		<script language="javascript" src="jsold/class/class_bf.js"></script>
+		<script language="javascript" src="jsold/class/class_bv.js"></script>
+		<script language="javascript" src="jsold/class/class_bz.js"></script>
+		<script language="javascript" src="jsold/class/class_ec.js"></script>
+		<script language="javascript" src="jsold/class/class_jo.js"></script>
+		<script language="javascript" src="jsold/class/class_lt.js"></script>
+		<script language="javascript" src="js/class/CPartie.js"></script>
+		<script language="javascript" src="jsold/class/class_pl.js"></script>
+		<script language="javascript" src="jsold/class/class_ps.js"></script>
+		<script language="javascript" src="jsold/class/class_rs.js"></script>
+		<script language="javascript" src="jsold/class/class_td.js"></script>
+		
+		<script language="javascript" src="jsold/func_usuelles.js"></script> <!-- RAISON D'ÉTAT -->
+		
+		<script language="javascript" src="jsold/event_clavier.js"></script>
+		<script language="javascript" src="jsold/event_nav.js"></script>
+		<script language="javascript" src="jsold/func_phx.js"></script>
+		<script language="javascript" src="jsold/init.js"></script>
+		<!-- Ce que tu dis n'a pas de sens -->
+		<script language="javascript" src="jsold/class/class_ab.js"></script>
+		<script language="javascript" src="jsold/class/class_db.js"></script>
+		<script language="javascript" src="jsold/class/class_ev.js"></script>
+		<script language="javascript" src="jsold/class/class_ez.js"></script>
+		<script language="javascript" src="jsold/class/class_gt.js"></script>
+		<script language="javascript" src="jsold/class/class_pp.js"></script>
+		<script language="javascript" src="jsold/class/class_tj.js"></script>
+		<script language="javascript" src="jsold/class/class_tp.js"></script>
+		<script language="javascript" src="js/func/ph1.js"></script>
+		<script language="javascript" src="jsold/func_ph2.js"></script>
+	</body>
+</html>
